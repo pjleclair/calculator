@@ -30,15 +30,15 @@
 .number-box {
     height: 120px;
     width: 90px;
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
 }
 
-.equals-box {
+.display-change-box {
     display: flex;
+    flex-direction: column;
 }
 
 .calc-num {
