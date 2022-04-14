@@ -1,22 +1,22 @@
 .frame {
     background-color: peachpuff;
-    height: 500px;
+    height: 400px;
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 20px;
 }
 
 .display {
     background-color: cadetblue;
     margin: 20px;
-    padding: 30px 100px;
+    padding: 60px 100px;
 }
 
 .function-box {
-    background-color: cadetblue;
-    margin: 20px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -28,6 +28,7 @@
 }
 
 .number-box {
+    margin-top: 10px;
     height: 120px;
     width: 90px;
     display: flex;
@@ -36,25 +37,14 @@
     flex-flow: row wrap;
 }
 
-.display-change-box {
-    display: flex;
-    flex-direction: column;
-}
-
 .calc-num {
     flex: 1 1 10%;
-}
-
-.right-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
 button {
     background-color: darkseagreen;
     color: white;
+    border-radius: 20px;
 }
 
 body {
