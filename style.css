@@ -23,13 +23,33 @@
 
 .calculator-buttons {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .number-box {
+    height: 120px;
+    width: 90px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+}
+
+.equals-box {
+    display: flex;
+}
+
+.calc-num {
+    flex: 1 1 10%;
+}
+
+.right-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 button {
