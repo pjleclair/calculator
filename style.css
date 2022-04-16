@@ -10,9 +10,18 @@
 }
 
 .display {
+    height: 60px;
+    width: 100px;
     background-color: cadetblue;
     margin: 20px;
-    padding: 60px 100px;
+    padding: 60px;
+    font-size: xx-large;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .function-box {
