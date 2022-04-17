@@ -3,7 +3,6 @@ function add(a,b) {
 };
 
 function subtract(a,b) {
-    console.log(a-b);
     return a-b;
 };
 
@@ -32,7 +31,7 @@ function operate(operator,a,b) {
 function equals() {
     if (numCount==1)
         result = result + +displayBox[0].innerHTML;
-    if ((numCount == 2)) {
+    if ((numCount == 2)&(CALCULATED==false)) {
         num2 = displayBox[0].innerHTML;
         result = operate(operator,+num1,+num2);
         numCount++;
@@ -40,11 +39,18 @@ function equals() {
         let num = displayVal[numCount];
         result = operate(operator,+result,+num);
         numCount++;
+    } else if ((CALCULATED = true) & ((numCount%2)==1)) {
+        num1 = displayVal[numCount];
+        result = operate(operator,+result,+num1)
+    } else if ((CALCULATED = true) & ((numCount%2)==0)) {
+        num2 = displayVal[numCount];
+        result = operate(operator,+result,+num2)
     }
     displayVal[numCount] = +displayBox[0].innerHTML;
     console.log(displayVal[numCount]);
     displayBox[0].innerHTML = +result;
     CALCULATED = false;
+    beenRan = false;
 }
 
 function displayNum(num) {
@@ -76,9 +82,13 @@ for (func of functionButtons) {
     let funcOperator = func.innerHTML;
     func.addEventListener("click", function() {
         nums[numCount] = +displayBox[0].innerHTML;
-        operator = funcOperator;
         if ((numCount%2) == 1) {
             num1 = nums[numCount];
+            if (numCount > 2) {
+                result = operate(operator,+result,+num1);
+                CALCULATED = true;
+                console.log(result);
+            }
         } else if ((numCount%2) == 0) {
             num2 = nums[numCount];
             if (numCount == 2) {
@@ -88,8 +98,10 @@ for (func of functionButtons) {
             } else if (numCount > 2) {
                 result = operate(operator,+result,+num2);
                 CALCULATED = true;
+                console.log(result);
             }
         }
+        operator = funcOperator;
         numCount++;
         displayBox[0].innerHTML = '';
     });
@@ -102,5 +114,6 @@ clearButton[0].addEventListener("click", function(){
     displayVal = {};
     numCount = 1;
     result = 0;
+    CALCULATED = false;
 });
 
