@@ -36,14 +36,14 @@ function equals() {
         result = operate(operator,+num1,+num2);
         numCount++;
     } else if ((numCount > 2) & (CALCULATED == false)) {
-        let num = displayVal[numCount];
+        let num = +displayBox[0].innerHTML;
         result = operate(operator,+result,+num);
         numCount++;
     } else if ((CALCULATED = true) & ((numCount%2)==1)) {
-        num1 = displayVal[numCount];
+        num1 = +displayBox[0].innerHTML
         result = operate(operator,+result,+num1)
     } else if ((CALCULATED = true) & ((numCount%2)==0)) {
-        num2 = displayVal[numCount];
+        num2 = +displayBox[0].innerHTML
         result = operate(operator,+result,+num2)
     }
     displayVal[numCount] = +displayBox[0].innerHTML;
@@ -84,9 +84,9 @@ for (func of functionButtons) {
         nums[numCount] = +displayBox[0].innerHTML;
         if ((numCount%2) == 1) {
             num1 = nums[numCount];
-            if (numCount > 2) {
+            if ((numCount > 2) & (CALCULATED=false)) {
                 result = operate(operator,+result,+num1);
-                CALCULATED = true;
+                CALCULATED=true;
                 console.log(result);
             }
         } else if ((numCount%2) == 0) {
