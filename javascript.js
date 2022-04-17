@@ -84,7 +84,7 @@ for (func of functionButtons) {
         nums[numCount] = +displayBox[0].innerHTML;
         if ((numCount%2) == 1) {
             num1 = nums[numCount];
-            if ((numCount > 2) & (CALCULATED=false)) {
+            if ((numCount > 2)) {
                 result = operate(operator,+result,+num1);
                 CALCULATED=true;
                 console.log(result);
