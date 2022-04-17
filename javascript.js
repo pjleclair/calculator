@@ -32,22 +32,30 @@ function operate(operator,a,b) {
 function equals() {
     if (numCount==1)
         result = result + +displayBox[0].innerHTML;
-    if (numCount == 2) {
+    if ((numCount == 2)) {
         num2 = displayBox[0].innerHTML;
         result = operate(operator,+num1,+num2);
-    } else if ((numCount > 2)) {
-        let num = +displayBox[0].innerHTML;
+        numCount++;
+    } else if ((numCount > 2) & (CALCULATED == false)) {
+        let num = displayVal[numCount];
         result = operate(operator,+result,+num);
+        numCount++;
     }
+    displayVal[numCount] = +displayBox[0].innerHTML;
+    console.log(displayVal[numCount]);
     displayBox[0].innerHTML = +result;
+    CALCULATED = false;
 }
 
 function displayNum(num) {
     let displayText = displayBox[0].innerHTML;
     displayBox[0].innerHTML = `${displayText+num}`;
+    displayVal[numCount] = +displayBox[0].innerHTML;
+    console.log(displayVal[numCount]);
 }
 
 let nums = {};
+let displayVal = {};
 let num1, num2, operator, numCount, result, CALCULATED;
 numCount = 1;
 result = 0;
@@ -71,16 +79,15 @@ for (func of functionButtons) {
         operator = funcOperator;
         if ((numCount%2) == 1) {
             num1 = nums[numCount];
-            if (numCount > 2) {
-                result = operate(operator,+result,+num1);
-            }
         } else if ((numCount%2) == 0) {
             num2 = nums[numCount];
             if (numCount == 2) {
                 result = operate(operator,+num1,+num2);
+                CALCULATED = true;
                 console.log(result);
             } else if (numCount > 2) {
                 result = operate(operator,+result,+num2);
+                CALCULATED = true;
             }
         }
         numCount++;
@@ -92,6 +99,7 @@ clearButton[0].addEventListener("click", function(){
     displayBox[0].innerHTML = '';
     operator = '';
     nums = {};
+    displayVal = {};
     numCount = 1;
     result = 0;
 });
