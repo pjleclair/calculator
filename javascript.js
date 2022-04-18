@@ -39,18 +39,27 @@ function equals() {
         let num = +displayBox[0].innerHTML;
         result = operate(operator,+result,+num);
         numCount++;
-    } else if ((CALCULATED = true) & ((numCount%2)==1)) {
+    } else if ((numCount > 2) & (CALCULATED == true)) {
+        if ((numCount%2)==0){
+            let num = +displayBox[0].innerHTML;
+            result = operate(operator,+num1,+num);
+            numCount++;
+        } else if ((numCount%2)==1) {
+            let num = +displayBox[0].innerHTML;
+            result = operate(operator,+result,+num);
+            numCount++;
+        }
+    } /* else if ((CALCULATED = true) & ((numCount%2)==1)) {
         num1 = +displayBox[0].innerHTML
         result = operate(operator,+result,+num1)
     } else if ((CALCULATED = true) & ((numCount%2)==0)) {
         num2 = +displayBox[0].innerHTML
         result = operate(operator,+result,+num2)
-    }
+    } */
     displayVal[numCount] = +displayBox[0].innerHTML;
     console.log(displayVal[numCount]);
     displayBox[0].innerHTML = +result;
     CALCULATED = false;
-    beenRan = false;
 }
 
 function displayNum(num) {
@@ -85,7 +94,7 @@ for (func of functionButtons) {
         if ((numCount%2) == 1) {
             num1 = nums[numCount];
             if ((numCount > 2)) {
-                result = operate(operator,+result,+num1);
+                // result = operate(operator,+result,+num1);
                 CALCULATED=true;
                 console.log(result);
             }
