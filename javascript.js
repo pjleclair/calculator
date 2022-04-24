@@ -19,7 +19,7 @@ function operate(operator,a,b) {
         return add(a,b);
     } else if (operator == '-') {
         return subtract(a,b);
-    } else if (operator == '%') {
+    } else if (operator == '/') {
         return divide(a,b);
     } else if (operator == 'x') {
         return multiply(a,b);
@@ -31,14 +31,13 @@ function operate(operator,a,b) {
 function equals() {
     if (numCount==1)
         result = result + +displayBox[0].innerHTML;
-    if ((numCount == 2)&(CALCULATED==false)) {
+    if ((numCount == 2)) {
         num2 = displayBox[0].innerHTML;
         result = operate(operator,+num1,+num2);
         numCount++;
     } else if ((numCount > 2) & (CALCULATED == false)) {
-        let num = +displayBox[0].innerHTML;
-        result = operate(operator,+result,+num);
-        numCount++;
+        //let num = +displayBox[0].innerHTML;
+        result = operate(operator,+result,+displayVal[numCount]);
     } else if ((numCount > 2) & (CALCULATED == true)) {
         if ((numCount%2)==0){
             let num = +displayBox[0].innerHTML;
@@ -49,7 +48,8 @@ function equals() {
             result = operate(operator,+result,+num);
             numCount++;
         }
-    } /* else if ((CALCULATED = true) & ((numCount%2)==1)) {
+    }
+     /* else if ((CALCULATED = true) & ((numCount%2)==1)) {
         num1 = +displayBox[0].innerHTML
         result = operate(operator,+result,+num1)
     } else if ((CALCULATED = true) & ((numCount%2)==0)) {
